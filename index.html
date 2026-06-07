@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARU ART SPACE — Visual Design Studio</title>
+<meta name="description" content="MARU Art Space — visual design and creative direction. E-commerce design, illustration, motion and original animal prints.">
+<meta property="og:title" content="MARU ART SPACE — Visual Design Studio">
+<meta property="og:description" content="Visual design & creative direction — e-commerce, illustration, motion, prints.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0d0d0f;
+    --dark:#15151a;
+    --dark-2:#1c1c22;
+    --gray-900:#2a2a32;
+    --gray-700:#4a4a55;
+    --gray-500:#8a8a95;
+    --white:#f5f5f7;
+    --accent:#e8e4dd;
+    --glow:rgba(180,160,255,.06);
+    --glow-2:rgba(255,180,160,.05);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    position:relative;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3,.heading{
+    font-family:'Syne',sans-serif;
+    font-weight:700;
+    line-height:1.1;
+    letter-spacing:-.02em;
+  }
+  h1{font-size:clamp(3.2rem,8vw,5rem)}
+  h2{font-size:clamp(2rem,5vw,3.2rem)}
+  h3{font-size:1.4rem}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1400px;margin:0 auto;padding:0 40px}
+  section{padding:120px 0;position:relative}
+  
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(13,13,15,.7);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(232,228,221,.08);
+    padding:20px 40px;
+  }
+  .nav-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:.05em}
+  .nav-links{display:flex;gap:40px;font-size:.9rem;font-weight:400}
+  .nav-links a{color:var(--gray-500);transition:color .3s;position:relative;white-space:nowrap}
+  .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--white);transition:width .3s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-links a:hover::after{width:100%}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .nav-toggle span{width:24px;height:2px;background:var(--white);display:block;border-radius:2px}
+  
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding-top:80px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(60% 50% at 30% 20%,var(--glow),transparent 60%),
+      radial-gradient(50% 50% at 80% 80%,var(--glow-2),transparent 60%),
+      var(--black);
+  }
+  .hero::before{
+    content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(180,160,255,.08),transparent 70%);
+    top:10%;left:50%;transform:translateX(-50%);
+    animation:float 14s ease-in-out infinite alternate;
+  }
+  @keyframes float{from{transform:translateX(-50%) translateY(0) scale(1)}to{transform:translateX(-50%) translateY(40px) scale(1.1)}}
+  .hero-content{position:relative;z-index:1;max-width:900px}
+  .hero h1{margin-bottom:24px;font-size:clamp(3.6rem,10vw,5.4rem);letter-spacing:-.03em;animation:fadeInUp .8s ease-out;background:linear-gradient(180deg,#fff 55%,#e83737 130%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .hero .subtitle{font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--gray-500);margin-bottom:48px;max-width:680px;margin-inline:auto;line-height:1.7;animation:fadeInUp .8s ease-out .1s both}
+  .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .8s ease-out .2s both}
+  .btn{padding:14px 40px;border:1px solid var(--accent);background:transparent;color:var(--white);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .4s}
+  .btn:hover{background:var(--white);color:var(--black)}
+  .btn.secondary{border-color:var(--gray-700);color:var(--gray-500)}
+  .btn.secondary:hover{border-color:var(--white);color:var(--white);background:transparent}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  
+  .about{background:var(--dark);text-align:center}
+  .about-text{max-width:700px;margin:0 auto;font-size:1.15rem;color:var(--gray-500);line-height:1.8}
+  
+  .entries-section{background:radial-gradient(70% 60% at 50% 0%,var(--glow),transparent 60%),var(--black)}
+  .entries-title{text-align:center;margin-bottom:70px}
+  .entries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:900px;margin:0 auto}
+  .entry-card{
+    border:1px solid rgba(232,228,221,.1);
+    padding:50px 36px;
+    background:linear-gradient(160deg,rgba(42,42,50,.4),rgba(28,28,34,.2));
+    transition:all .45s cubic-bezier(.25,.46,.45,.94);
+    text-align:left;cursor:pointer;position:relative;overflow:hidden;
+  }
+  .entry-card::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 80% at 50% 0%,var(--glow),transparent 70%);opacity:0;transition:opacity .45s}
+  .entry-card:hover{border-color:rgba(232,228,221,.3);transform:translateY(-6px)}
+  .entry-card:hover::before{opacity:1}
+  .entry-num{font-family:'Syne',sans-serif;font-size:.85rem;color:#e83737;letter-spacing:.1em;position:relative;z-index:1}
+  .entry-card h3{margin:18px 0 14px;font-size:1.5rem;position:relative;z-index:1}
+  .entry-card p{font-size:.95rem;color:var(--gray-500);line-height:1.6;position:relative;z-index:1}
+  .entry-tag{display:inline-block;margin-top:20px;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);position:relative;z-index:1}
+  
+  .featured{background:radial-gradient(50% 70% at 85% 50%,var(--glow-2),transparent 60%),var(--dark);padding:140px 0}
+  .featured-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+  .featured-label{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-700);margin-bottom:16px}
+  .featured-content h2{margin-bottom:24px}
+  .featured-content p{color:var(--gray-500);margin-bottom:20px;font-size:1.05rem;line-height:1.8}
+  .featured-link{display:inline-block;margin-top:24px;padding:12px 0;border-bottom:2px solid var(--white);font-weight:500;transition:all .3s}
+  .featured-link:hover{border-color:var(--gray-500);color:var(--gray-500)}
+  .featured-image{aspect-ratio:4/5;border:1px solid rgba(232,228,221,.1);overflow:hidden}
+  .featured-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .featured-image:hover img{transform:scale(1.05)}
+  
+  .portfolio-section{padding:100px 0;position:relative}
+  .portfolio-section:nth-child(even){background:linear-gradient(180deg,transparent,rgba(28,28,34,.3),transparent)}
+  .portfolio-head{margin-bottom:50px;display:flex;align-items:baseline;gap:20px}
+  .portfolio-head h2{margin:0}
+  .portfolio-head .count{font-size:.9rem;color:var(--gray-700);font-family:'Syne',sans-serif}
+  .gallery-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+  .gallery-item{width:calc(25% - 15px);aspect-ratio:3/4;background:var(--gray-900);border:1px solid rgba(232,228,221,.08);overflow:hidden;cursor:pointer;transition:all .5s}
+  .gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover;transition:transform .8s;display:block}
+  /* подзаголовок подраздела */
+  .sub-label{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin:0 0 24px}
+  .sub-label.spaced{margin-top:64px}
+  /* длинные карточки с инфографикой — видны целиком */
+  .cards-grid{column-count:3;column-gap:24px}
+  .cards-grid .card-tall{width:100%;break-inside:avoid;margin-bottom:24px}
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+  .product-grid .card-tall{aspect-ratio:1/1}
+  .product-grid .card-tall img{height:100%;object-fit:cover}
+  .comic-wide{margin-top:24px;border:1px solid rgba(232,228,221,.1);overflow:hidden;max-width:920px;margin-left:auto;margin-right:auto}
+  .leela-feature{max-width:680px;margin:0 auto;border:1px solid rgba(232,228,221,.1);overflow:hidden;transition:all .5s}
+  .leela-feature img{width:100%;height:auto;display:block;transition:transform .8s}
+  .leela-feature:hover{border-color:rgba(232,228,221,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .leela-feature:hover img{transform:scale(1.02)}
+  .comic-wide img{width:100%;display:block;transition:transform .6s}
+  .comic-wide:hover img{transform:scale(1.02)}
+  .menu-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+  .menu-item{width:calc(50% - 10px);max-width:100%;aspect-ratio:3/2;background:var(--gray-900);border:1px solid rgba(232,228,221,.08);overflow:hidden;cursor:pointer;transition:all .5s}
+  .menu-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s;display:block}
+  .menu-item:hover{border-color:rgba(232,228,221,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .menu-item:hover img{transform:scale(1.04)}
+  .card-tall{border:1px solid rgba(232,228,221,.1);overflow:hidden;background:transparent;transition:all .5s}
+  .card-tall img{width:100%;height:auto;display:block;transition:transform .8s}
+  .card-tall:hover{border-color:rgba(232,228,221,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .card-tall:hover img{transform:scale(1.03)}
+  /* Etsy-витрина товаров */
+  .shop-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+  .shop-card{width:calc(25% - 17px)}
+  .shop-card{border:1px solid rgba(232,228,221,.1);background:var(--gray-900);overflow:hidden;transition:all .45s;cursor:pointer}
+  .shop-card .ph{aspect-ratio:4/5;overflow:hidden}
+  .shop-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+  .shop-card video{width:100%;height:100%;object-fit:cover;display:block}
+  .shop-card:hover{border-color:rgba(232,228,221,.3);transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+  .shop-card:hover img{transform:scale(1.06)}
+  .shop-card .info{padding:16px 18px;display:none}
+  .shop-card .title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:600;color:var(--white);margin-bottom:4px}
+  .shop-card .type{font-size:.82rem;color:var(--gray-500)}
+  .gallery-item:hover{border-color:rgba(232,228,221,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .gallery-item:hover img{transform:scale(1.08)}
+  
+  .contact{text-align:center;background:radial-gradient(60% 80% at 50% 0%,var(--glow),transparent 60%),var(--dark);padding:120px 0}
+  .contact h2{margin-bottom:24px}
+  .contact-email{display:inline-block;font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:600;color:var(--white);border-bottom:2px solid rgba(235,55,55,.5);padding-bottom:6px;transition:border-color .3s;margin-bottom:8px}
+  .contact-email:hover{border-color:rgba(235,55,55,1)}
+  .contact-links{display:flex;justify-content:center;gap:48px;margin-top:40px;flex-wrap:wrap}
+  .contact-link{font-size:1.1rem;color:var(--gray-500);transition:color .3s;border-bottom:2px solid transparent;padding-bottom:4px}
+  .contact-link:hover{color:var(--white);border-color:var(--white)}
+  
+  footer{border-top:1px solid rgba(232,228,221,.08);padding:40px 0;text-align:center;font-size:.85rem;color:var(--gray-700)}
+  
+  .reveal{opacity:0;transform:translateY(40px)}
+  .reveal.visible{opacity:1;transform:translateY(0);transition:opacity .8s ease,transform .8s ease}
+  #plankton{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50;opacity:.7}
+  
+  @media(max-width:1024px){
+    .container{padding:0 30px}
+    nav{padding:16px 30px}
+    .entries-grid{grid-template-columns:1fr;gap:20px}
+    .featured-inner{grid-template-columns:1fr;gap:40px}
+    .gallery-item,.shop-card{width:calc(33.333% - 14px)}
+    .cards-grid{column-count:2}
+    .product-grid{grid-template-columns:repeat(2,1fr)}
+    .menu-item{width:100%}
+  }
+  @media(max-width:768px){
+    .container{padding:0 20px}
+    nav{padding:14px 20px}
+    .nav-toggle{display:flex}
+    .nav-inner{justify-content:space-between}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(13,13,15,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,228,221,.1);padding:8px 20px 16px}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:14px 0;font-size:1rem;border-bottom:1px solid rgba(232,228,221,.06)}
+    section{padding:60px 0}
+    h1{font-size:2.4rem}
+    h2{font-size:1.8rem}
+    .gallery-item{width:calc(50% - 10px)}
+    .shop-card{width:calc(50% - 12px)}
+    .cards-grid{column-count:1}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">MARU ART SPACE</div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#ecommerce" onclick="document.getElementById('navLinks').classList.remove('open')">E-commerce</a>
+      <a href="#illustration" onclick="document.getElementById('navLinks').classList.remove('open')">Illustration</a>
+      <a href="#motion" onclick="document.getElementById('navLinks').classList.remove('open')">Motion</a>
+      <a href="#prints" onclick="document.getElementById('navLinks').classList.remove('open')">Prints</a>
+      <a href="#contact" onclick="document.getElementById('navLinks').classList.remove('open')">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Visual Design & Creative Direction</h1>
+    <p class="subtitle">E-commerce design, illustration, visual storytelling and motion design.</p>
+    <div class="hero-buttons">
+      <button class="btn" onclick="document.getElementById('entries').scrollIntoView({behavior:'smooth'})">View Work</button>
+      <button class="btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container">
+    <div class="about-text reveal">
+      <p>I craft visual solutions for brands, products and original projects — product imagery, illustration, visual storytelling and experimental concepts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="entries-section" id="entries">
+  <div class="container">
+    <div class="entries-title reveal"><h2>What I Do</h2></div>
+    <div class="entries-grid">
+      <a href="#ecommerce" class="entry-card reveal">
+        <div class="entry-num">01</div>
+        <h3>E-commerce Design</h3>
+        <p>Product cards, infographics, food visuals and catalog imagery for marketplaces.</p>
+        <span class="entry-tag">Core →</span>
+      </a>
+      <a href="#illustration" class="entry-card reveal">
+        <div class="entry-num">02</div>
+        <h3>Illustration & Storytelling</h3>
+        <p>Original illustrations, comics and metaphorical cards. My style and identity.</p>
+        <span class="entry-tag">Signature →</span>
+      </a>
+      <a href="#motion" class="entry-card reveal">
+        <div class="entry-num">03</div>
+        <h3>Motion</h3>
+        <p>Animation and video visuals for social media and ad campaigns.</p>
+        <span class="entry-tag">Showreel →</span>
+      </a>
+      <a href="#prints" class="entry-card reveal">
+        <div class="entry-num">04</div>
+        <h3>Animal Art & Prints</h3>
+        <p>Original animal art in digital format — posters, canvas, merch.</p>
+        <span class="entry-tag">Shop →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="ecommerce">
+  <div class="container">
+    <div class="portfolio-head reveal"><h2>E-commerce Design</h2><span class="count">Core</span></div>
+    <div class="sub-label reveal">Product Cards</div>
+    <div class="product-grid">
+      <div class="card-tall reveal"><img src="card-helmet-gold.jpg" alt="Product card: motorcycle helmet"></div>
+      <div class="card-tall reveal"><img src="card-sneakers.jpg" alt="Product card: sneakers"></div>
+      <div class="card-tall reveal"><img src="card-earbuds.jpg" alt="Product card: earbuds"></div>
+      <div class="card-tall reveal"><img src="card-motosuit.jpg" alt="Product card: motorcycle suit"></div>
+      <div class="card-tall reveal"><img src="card-rope.jpg" alt="Product card: jump rope"></div>
+      <div class="card-tall reveal"><img src="card-helmet-gzhel.jpg" alt="Product card: motorcycle helmet"></div>
+    </div>
+    <div class="sub-label spaced reveal">Vintage Ads</div>
+    <div class="cards-grid">
+      <div class="card-tall reveal"><img src="card-drill.jpg" alt="Vintage ad: drill"></div>
+      <div class="card-tall reveal"><img src="card-vintage-floor.jpg" alt="Vintage ad: floor cleaner tablets"></div>
+      <div class="card-tall reveal"><img src="card-compressor.jpg" alt="Vintage ad: air compressor"></div>
+      <div class="card-tall reveal"><img src="card-vintage-perfume.jpg" alt="Vintage ad: perfume"></div>
+      <div class="card-tall reveal"><img src="card-tent.jpg" alt="Vintage ad: tent"></div>
+      <div class="card-tall reveal"><img src="card-vintage-brow.jpg" alt="Vintage ad: brow pencil"></div>
+      <div class="card-tall reveal"><img src="card-vintage-diffuser.jpg" alt="Vintage ad: reed diffuser"></div>
+    </div>
+    <div class="sub-label spaced reveal">Menus</div>
+    <div class="menu-grid">
+      <div class="menu-item reveal"><img src="menu-kaze.jpg" alt="KAZE menu"></div>
+      <div class="menu-item reveal"><img src="menu-bistro.jpg" alt="Bistro Verde menu"></div>
+      <div class="menu-item reveal"><img src="menu-casa.jpg" alt="Casa Del Sol menu"></div>
+      <div class="menu-item reveal"><img src="menu-breakfast-ru.jpg" alt="Breakfast menu"></div>
+      <div class="menu-item reveal"><img src="menu-breakfast-en.jpg" alt="Breakfast menu"></div>
+    </div>
+    <div class="sub-label spaced reveal">Food Visuals</div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="food-canape.jpg" alt="Caviar canapés"></div>
+      <div class="gallery-item reveal"><img src="food-sushi.jpg" alt="Sushi set"></div>
+      <div class="gallery-item reveal"><img src="food-pizza2.jpg" alt="Margherita pizza"></div>
+      <div class="gallery-item reveal"><img src="food-cola.jpg" alt="Beverage"></div>
+      <div class="gallery-item reveal"><img src="food-paella.jpg" alt="Paella"></div>
+      <div class="gallery-item reveal"><img src="food-breakfast.jpg" alt="Breakfast"></div>
+      <div class="gallery-item reveal"><img src="food-avocado.jpg" alt="Avocado toast with caviar"></div>
+      <div class="gallery-item reveal"><img src="food-fish.jpg" alt="Fish platter"></div>
+      <div class="gallery-item reveal"><img src="food-wine.jpg" alt="Wine and salmon canapés"></div>
+      <div class="gallery-item reveal"><img src="food-cheese.jpg" alt="Cheese platter"></div>
+      <div class="gallery-item reveal"><img src="food-borscht.jpg" alt="Borscht"></div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="illustration">
+  <div class="container">
+    <div class="portfolio-head reveal"><h2>Illustration & Storytelling</h2><span class="count">Signature</span></div>
+    <div class="sub-label reveal">Metaphorical &amp; Tarot Cards</div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="cards-stars.jpg" alt="Cards: star woman"></div>
+      <div class="gallery-item reveal"><img src="cards-eagle.jpg" alt="Cards: eagle and spider"></div>
+      <div class="gallery-item reveal"><img src="cards-gold.jpg" alt="Gold deck"></div>
+      <div class="gallery-item reveal"><img src="cards-owl.jpg" alt="Card: owl"></div>
+      <div class="gallery-item reveal"><img src="cards-table.jpg" alt="Cards on a table"></div>
+      <div class="gallery-item reveal"><img src="cards-butterfly.jpg" alt="Card: butterfly"></div>
+      <div class="gallery-item reveal"><img src="tarot-priestess.jpg" alt="Pop-art tarot: The High Priestess"></div>
+      <div class="gallery-item reveal"><img src="tarot-tower.jpg" alt="Pop-art tarot: The Tower"></div>
+      <div class="gallery-item reveal"><img src="tarot-fool.jpg" alt="Pop-art tarot: The Fool"></div>
+      <div class="gallery-item reveal"><img src="tarot-justice.jpg" alt="Pop-art tarot: Justice"></div>
+    </div>
+    <div class="sub-label spaced reveal">Leela — Game of Self-Knowledge</div>
+    <div class="leela-feature reveal"><img src="cards-leela.jpg" alt="Leela game board"></div>
+    <div class="sub-label spaced reveal">Comics</div>
+    <div class="cards-grid">
+      <div class="card-tall reveal"><img src="comic-students.jpg" alt="Comic: students"></div>
+      <div class="card-tall reveal"><img src="comic-hiking.jpg" alt="Comic: hiking"></div>
+      <div class="card-tall reveal"><img src="comic-cats.jpg" alt="Comic: travel"></div>
+    </div>
+    <div class="sub-label spaced reveal">Digital Illustration · Cars</div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="exp-drift-car.jpg" alt="Nissan Silvia drift"></div>
+      <div class="gallery-item reveal"><img src="auto-camaro-yellow.jpg" alt="Camaro SS, yellow"></div>
+      <div class="gallery-item reveal"><img src="auto-camaro-red.jpg" alt="Camaro SS, red"></div>
+      <div class="gallery-item reveal"><img src="auto-elcamino.jpg" alt="El Camino in the rain"></div>
+      <div class="gallery-item reveal"><img src="auto-mirror.jpg" alt="Eyes in the mirror"></div>
+      <div class="gallery-item reveal"><img src="auto-ferrari.jpg" alt="Ferrari in the desert"></div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="motion">
+  <div class="container">
+    <div class="portfolio-head reveal"><h2>Motion</h2><span class="count">Showreel</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><video src="anim-amor.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-car-girl.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-boxing.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-dino-girl.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-mars.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-eye.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-glowup.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-number3.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="tarot-peace.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="anim-skatecat.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-dog-glasses.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="anim-aquarium.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-chief.mp4" autoplay loop muted playsinline></video></div>
+      <div class="gallery-item reveal"><video src="vid-leather-girl.mp4" autoplay loop muted playsinline></video></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANIMAL ART & PRINTS (Etsy-style) -->
+<section class="portfolio-section" id="prints">
+  <div class="container">
+    <div class="portfolio-head reveal"><h2>Animal Art & Prints</h2><span class="count">Shop</span></div>
+    <p class="reveal" style="color:var(--gray-500);max-width:640px;margin:-30px 0 40px">Original animal art in digital format — ready-made prints for posters, canvas and apparel. From pop-art to flamenco.</p>
+    <div class="shop-grid">
+      <div class="shop-card reveal"><div class="ph"><img src="print-borzoi1.jpg" alt="Pop-art borzoi"></div><div class="info"><div class="title">Pop-art borzoi</div><div class="type">Poster · Canvas</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="exp-gaudi-cat.jpg" alt="Gaudí-style cat"></div><div class="info"><div class="title">Gaudí Cat</div><div class="type">Mosaic · Print</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="pop-dog-2.jpg" alt="Neon mastiff"></div><div class="info"><div class="title">Neon mastiff</div><div class="type">Print</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="pop-dog-3.jpg" alt="Warhol pop-art dog"></div><div class="info"><div class="title">Pop-art dog</div><div class="type">Print</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-max.jpg" alt="Borzoi Max"></div><div class="info"><div class="title">Retro portrait “Max”</div><div class="type">Framed poster</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-monica.jpg" alt="Flamenco cat Monica"></div><div class="info"><div class="title">Flamenco Cat “Monica”</div><div class="type">Canvas</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-borzoi2.jpg" alt="Pop-art borzoi"></div><div class="info"><div class="title">Pop-art borzoi</div><div class="type">Framed poster</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-tshirt-cat.jpg" alt="Flamenco cat tee"></div><div class="info"><div class="title">Flamenco Cat</div><div class="type">T-shirt</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-tshirt-dog1.jpg" alt="Pop-art dog tee"></div><div class="info"><div class="title">Pop-art dog</div><div class="type">T-shirt</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="print-tshirt-dog2.jpg" alt="Dog tee"></div><div class="info"><div class="title">Neon dog</div><div class="type">T-shirt</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="exp-flamenco-cat.jpg" alt="Flamenco cat art"></div><div class="info"><div class="title">Flamenco Cat</div><div class="type">Original · Print</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><img src="pop-dog-1.jpg" alt="Pop-art mastiff"></div><div class="info"><div class="title">Pop-art mastiff</div><div class="type">Print</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><video src="anim-flamenco.mp4" autoplay loop muted playsinline></video></div><div class="info"><div class="title">Flamenco Cat</div><div class="type">Animation</div></div></div>
+      <div class="shop-card reveal"><div class="ph"><video src="anim-tshirt.mp4" autoplay loop muted playsinline></video></div><div class="info"><div class="title">Cat print on a tee</div><div class="type">Video mockup</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container">
+    <div class="featured-inner">
+      <div class="featured-content reveal">
+        <div class="featured-label">★ Premium Project</div>
+        <h2>Mar de Luz Lab</h2>
+        <p>A concept web project for a jewelry brand, built on an atmospheric visual system and premium product presentation. Where the ancient beauty of the ocean meets the brilliance of haute joaillerie.</p>
+        <a href="https://mardeluzlab.github.io/" target="_blank" class="featured-link">View Project →</a>
+      </div>
+      <div class="featured-image reveal"><img src="mardeluz-featured.jpg" alt="Mar de Luz"></div>
+    </div>
+    <div class="sub-label spaced reveal" style="margin-top:60px">Premium Jewelry Visuals</div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="jewel-emerald-necklace.jpg" alt="Emerald necklace"></div>
+      <div class="gallery-item reveal"><img src="jewel-sapphire-necklace.jpg" alt="Sapphire necklace"></div>
+      <div class="gallery-item reveal"><img src="jewel-ruby-earrings.jpg" alt="Ruby earrings"></div>
+      <div class="gallery-item reveal"><img src="jewel-emerald-earrings.jpg" alt="Emerald earrings"></div>
+      <div class="gallery-item reveal"><img src="jewel-diamond-bracelet.jpg" alt="Diamond bracelet"></div>
+      <div class="gallery-item reveal"><img src="jewel-yellow-bracelet.jpg" alt="Yellow diamond bracelet"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="reveal">Let's talk</h2>
+    <a href="mailto:maruartti@gmail.com" class="contact-email reveal">maruartti@gmail.com</a>
+    <div class="contact-links">
+      <a href="https://t.me/maruartspace" target="_blank" class="contact-link reveal">Telegram</a>
+      <a href="https://www.instagram.com/maru.art.space" target="_blank" class="contact-link reveal">Instagram</a>
+      <a href="https://www.tiktok.com/@maru.art.space" target="_blank" class="contact-link reveal">TikTok</a>
+      <a href="https://www.behance.net/maruartist" target="_blank" class="contact-link reveal">Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container"><p style="font-family:'Syne',sans-serif;font-weight:600;color:var(--gray-500);letter-spacing:.05em;margin-bottom:6px">MARU ART SPACE</p><p>Visual Design Studio · © 2026</p></div>
+</footer>
+
+<canvas id="plankton"></canvas>
+
+<script>
+  // плавающие частицы (планктон)
+  (function(){
+    const c=document.getElementById('plankton'),x=c.getContext('2d');
+    let w,h,parts;
+    function init(){
+      w=c.width=innerWidth;h=c.height=innerHeight;
+      parts=Array.from({length:Math.min(90,Math.floor(w/16))},()=>({
+        x:Math.random()*w,y:Math.random()*h,
+        r:Math.random()*2.2+.6,
+        dx:(Math.random()-.5)*.3,dy:(Math.random()-.5)*.3,
+        a:Math.random()*.5+.45,
+        tw:Math.random()*0.04+0.01,ph:Math.random()*6.28
+      }));
+    }
+    function draw(){
+      x.clearRect(0,0,w,h);
+      for(const p of parts){
+        p.x+=p.dx;p.y+=p.dy;p.ph+=p.tw;
+        if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+        const al=p.a*(0.6+0.4*Math.sin(p.ph));
+        x.beginPath();x.arc(p.x,p.y,p.r,0,7);
+        x.fillStyle='rgba(235,55,55,'+al+')';x.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    init();draw();addEventListener('resize',init);
+  })();
+</script>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -80px 0px'});
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
