@@ -334,8 +334,14 @@ close:"Cerrar",prev:"Anterior",next:"Siguiente",works:"trabajos"}
 /* ---------- language ---------- */
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const sstore={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
-let lang=store.get("mas-lang");
+/* language: ?lang= in the address wins, then the last choice, then the browser language */
+const qlang=(()=>{try{return new URLSearchParams(location.search).get("lang")}catch(e){return null}})();
+let lang=(qlang==="en"||qlang==="es")?qlang:store.get("mas-lang");
 if(lang!=="en"&&lang!=="es")lang=(navigator.language||"").slice(0,2)==="es"?"es":"en";
+store.set("mas-lang",lang);
+/* the address bar shows the language: ?lang=es for Spanish, clean address for English */
+const langURL=l=>{const u=new URL(location.href);if(l==="es")u.searchParams.set("lang","es");else u.searchParams.delete("lang");return u.pathname+u.search+u.hash};
+try{history.replaceState(null,"",langURL(lang))}catch(e){}
 const li=lang==="es"?1:0, tx=T[lang];
 document.documentElement.lang=lang;
 
@@ -351,7 +357,9 @@ document.querySelectorAll("[data-t]").forEach(el=>{const v=tx[el.dataset.t];if(v
 document.querySelectorAll("[data-t-label]").forEach(el=>el.setAttribute("aria-label",tx[el.dataset.tLabel]));
 document.getElementById("hint").textContent=still?"":(fine?tx.hint_click:tx.hint_tap);
 document.querySelectorAll(".lang button").forEach(b=>{b.classList.toggle("on",b.dataset.lang===lang);
-  b.onclick=()=>{if(b.dataset.lang===lang)return;store.set("mas-lang",b.dataset.lang);sstore.set("mas-y",String(scrollY));location.reload()}});
+  b.onclick=()=>{if(b.dataset.lang===lang)return;store.set("mas-lang",b.dataset.lang);sstore.set("mas-y",String(scrollY));location.replace(langURL(b.dataset.lang))}});
+/* Maru Tech Wing opens in the same language */
+document.querySelectorAll('a[href^="https://maruartspace.github.io/maru-tech-wing"]').forEach(a=>{if(lang==="es")a.href="https://maruartspace.github.io/maru-tech-wing/?lang=es"});
 
 const heroH=document.getElementById("heroH");
 heroH.innerHTML=["Maru Art","Space"].map(line=>
